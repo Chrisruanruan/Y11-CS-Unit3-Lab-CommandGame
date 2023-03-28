@@ -21,7 +21,7 @@ public class Main {
     public static void forest(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("You are in a forest. " +
-                "\n You hear some water to the east, and some rustling to the north.");
+                "\n You hear some water to the west, and some rustling to the north.");
         String str = scanner.nextLine();
         while (!str.equals("go west")&&!str.equals("go east")&&!str.equals("go north")) {
             System.out.println("You can't do that.");
@@ -155,8 +155,7 @@ public class Main {
             str = scanner.nextLine();
         }
 
-        str=scanner.nextLine();
-        while (lantern==0||key==false) {
+        while (lantern==0||key==false||health!=100) {
             while (!str.equals("get lantern")&&!str.equals("get key")&&!str.equals("eat pork")) {
                 System.out.println("You can't do that.");
                 str = scanner.nextLine();
@@ -171,7 +170,7 @@ public class Main {
                 key = true;
                 str = scanner.nextLine();
             }
-            if (str.equals("eat pork")) {
+            if (str.equals("get pork")||str.equals("eat pork")) {
                 System.out.println("Delicious.");
                 health = 100;
                 str = scanner.nextLine();
@@ -208,7 +207,7 @@ public class Main {
                     str = scanner.nextLine();
                 }
                 while (!str.equals("hit troll with sword")){
-                    health = health - 20;
+                    health = health/2;
                     System.out.println("Ouch. The troll hits you. you are now on " + (health) + " HP. " +
                             "\n You must hit the troll with your sword");
                     if (health>= 1) str = scanner.nextLine();
@@ -221,7 +220,7 @@ public class Main {
                     str = scanner.nextLine();
                 }
                 while (!str.equals("hit troll with sword")){
-                    health = health/ 2;
+                    health = health - 20;
                     System.out.println("The troll makes a critical hit. you are now on " + (health) + " HP. " +
                             "\n You must hit the troll with your sword");
                     if (health>= 1)str = scanner.nextLine();
@@ -235,6 +234,7 @@ public class Main {
             }
         }
         if (sword == 0) System.out.println("You are defenseless. The troll easily defeats you.\n He makes a soup and drinks your flesh.");
+        return;
 
     }
 
